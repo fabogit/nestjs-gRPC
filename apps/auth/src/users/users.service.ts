@@ -10,6 +10,7 @@ import {
   User,
   Users,
   PaginationDto,
+  TOTAL_USERS,
 } from '@app/common';
 import { Observable, Subject } from 'rxjs';
 import { randomUUID } from 'crypto';
@@ -39,9 +40,8 @@ export class UsersService implements OnModuleInit {
    * Initializes the service by creating a predefined number of users with mock data.
    */
   onModuleInit() {
-    const number = 500;
-    this.logger.log(`Creating ${number} Users...`);
-    for (let i = 0; i < number; i++) {
+    this.logger.log(`Creating ${TOTAL_USERS} Users...`);
+    for (let i = 0; i < TOTAL_USERS; i++) {
       this.create({
         username: faker.internet.username(),
         password: faker.internet.password(), //for development it's okay

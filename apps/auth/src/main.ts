@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { join } from 'path';
-import { AUTH } from '@app/common';
+import { AUTH_PACKAGE_NAME } from '@app/common';
 import { AuthModule } from './auth.module';
 
 /**
@@ -21,7 +21,8 @@ async function bootstrap() {
       options: {
         // path to proto when compiled
         protoPath: join(__dirname, '../auth.proto'),
-        package: AUTH,
+        // generated name for the package
+        package: AUTH_PACKAGE_NAME,
       },
     },
   );
