@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+// Declares the package for these messages and services.
+// This helps organize your protobuf definitions and prevents naming conflicts,
+// especially in larger projects.
+package auth;
+
+// Definition of the UsersService,
+// which outlines the available remote procedure calls for managing users.
+service UsersService {
+  // rpc for creating a new user.
+  rpc CreateUser(CreateUserDto) returns (User) {}
+  // rpc for retrieving all users. It takes an Empty message as input,
+  // indicating no specific parameters are needed.
+  rpc FindAllUsers(Empty) returns (Users) {}
+  // rpc for retrieving a single user based on a provided identifier.
+  rpc FindOneUser(FindOneUserDto) returns (User) {}
+  // rpc for updating an existing user's information.
+  rpc UpdateUser(UpdateUserDto) returns (User) {}
+  // rpc for removing a user based on their identifier.
+  rpc RemoveUser(FindOneUserDto) returns (User) {}
+  // rpc for querying users with pagination.
+  // It takes a stream of PaginationDto as input and returns a stream of Users.
+  rpc QueryUsers(stream PaginationDto) returns (stream Users) {}
+}
+
+// Message definition for the CreateUser request DTO (Data Transfer Object).
+message CreateUserDto {
+  string username = 1;
+  string password = 2;
+  int32 age = 3;
+}
+
+// Message definition for a User. Represents the structure of a user object.
+message User {
+  string id = 1;
+  string username = 2;
+  string password = 3;
+  int32 age = 4;
+  bool isSubscribed = 5;
+  // Nested message containing social media links for the user.
+  SocialMedia socialMedia = 6;
+}
+
+// Message definition for Social Media links.
+// The 'optional' keyword means this field might not be set.
+message SocialMedia {
+  // Optional Twitter URI for the user.
+  optional string twitterUri = 1;
+  // Optional Facebook URI for the user.
+  optional string fbUri = 2;
+}
+
+// Empty message definition.
+// Used when no request or response body is needed for an RPC.
+message Empty {}
+
+// Message definition for wrapping a list of User messages.
+// Useful for returning multiple users in a single response.
+message Users {
+  // Repeated field 'users' to hold a list of User messages.
+  repeated User users = 1;
+}
+
+// Message definition for the FindOneUser request DTO.
+message FindOneUserDto { string id = 1; }
+
+// Message definition for the UpdateUser request DTO.
+message UpdateUserDto {
+  string id = 1;
+  // Nested message to update the user's social media information.
+  SocialMedia socialMedia = 2;
+}
+
+// Message definition for Pagination request DTO.
+message PaginationDto {
+  // Page number for pagination.
+  int32 page = 1;
+  // Number of items to skip for pagination.
+  int32 skip = 2;
+}
+
+// To generate auth.ts using ts-proto from the project root run:
+// protoc --plugin=./node_modules/.bin//protoc-gen-ts_proto --ts_proto_out=./ --ts_proto_opt=nestJs=true ./proto/auth.proto

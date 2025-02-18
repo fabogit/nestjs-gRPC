@@ -6,27 +6,45 @@
     "tsConfigPath": "apps/api-gateway/tsconfig.app.json",
     "webpack": true
   },
+  "entryFile": "src/main",
   "monorepo": true,
   "projects": {
     "api-gateway": {
       "compilerOptions": {
-        "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
+        "assets": [
+          "proto/*.proto"
+        ],
+        "tsConfigPath": "apps/api-gateway/tsconfig.app.json",
+        "watchAssets": true
       },
-      "entryFile": "main",
+      "entryFile": "src/main",
       "root": "apps/api-gateway",
-      "sourceRoot": "apps/api-gateway/src",
+      "sourceRoot": "./",
       "type": "application"
     },
     "auth": {
       "compilerOptions": {
-        "tsConfigPath": "apps/auth/tsconfig.app.json"
+        "assets": [
+          "proto/*.proto"
+        ],
+        "tsConfigPath": "apps/auth/tsconfig.app.json",
+        "watchAssets": true
       },
-      "entryFile": "main",
+      "entryFile": "src/main",
       "root": "apps/auth",
-      "sourceRoot": "apps/auth/src",
+      "sourceRoot": "./",
       "type": "application"
+    },
+    "common": {
+      "compilerOptions": {
+        "tsConfigPath": "libs/common/tsconfig.lib.json"
+      },
+      "entryFile": "index",
+      "root": "libs/common",
+      "sourceRoot": "libs/common/src",
+      "type": "library"
     }
   },
   "root": "apps/api-gateway",
-  "sourceRoot": "apps/api-gateway/src"
+  "sourceRoot": "./"
 }
