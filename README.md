@@ -39,7 +39,8 @@ $ pnpm install
 $ pnpm run start
 
 # watch mode
-$ pnpm run start:dev
+$ pnpm run start:dev auth
+$ pnpm run start:dev api-gateway
 
 # production mode
 $ pnpm run start:prod

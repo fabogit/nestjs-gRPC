@@ -1,0 +1,185 @@
+{
+  "info": {
+    "_exporter_id": "23729182",
+    "_postman_id": "f0ab57ca-abd0-4e5c-8895-a820bbd455dc",
+    "name": "Nestjs-gRPC",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "users",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "header": [],
+        "method": "GET",
+        "url": {
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "users"
+          ],
+          "port": "3000",
+          "raw": "localhost:3000/users"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "users",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\n    \"email\": \"user1@email.com\",\n    \"password\": \"Userp@ssword123!\"\n}"
+        },
+        "header": [],
+        "method": "POST",
+        "url": {
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "users"
+          ],
+          "port": "3000",
+          "raw": "localhost:3000/users"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "users/:id",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "header": [],
+        "method": "GET",
+        "url": {
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "users",
+            ":id"
+          ],
+          "port": "3000",
+          "raw": "localhost:3000/users/:id",
+          "variable": [
+            {
+              "key": "id",
+              "value": "fbec6055-a874-4a9d-a76e-c3d268d8c977"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "users/:id",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\n    \"id\": \"fbec6055-a874-4a9d-a76e-c3d268d8c977\",\n    \"socialMedia\": {\n        \"fbUri\": \"@user1Fbk\"\n    }\n}"
+        },
+        "header": [],
+        "method": "PATCH",
+        "url": {
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "users",
+            ":id"
+          ],
+          "port": "3000",
+          "raw": "localhost:3000/users/:id",
+          "variable": [
+            {
+              "key": "id",
+              "value": "fbec6055-a874-4a9d-a76e-c3d268d8c977"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "users/:id",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "header": [],
+        "method": "DELETE",
+        "url": {
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "users",
+            ":id"
+          ],
+          "port": "3000",
+          "raw": "localhost:3000/users/:id",
+          "variable": [
+            {
+              "key": "id",
+              "value": "62a86daa-b2c2-4102-8981-f75a344648a4"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "users/email",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\n    \"email\": \"user1@email.com\",\n    \"password\": \"Userp@ssword123!\"\n}"
+        },
+        "header": [],
+        "method": "POST",
+        "url": {
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "users",
+            "email"
+          ],
+          "port": "3000",
+          "raw": "localhost:3000/users/email"
+        }
+      },
+      "response": []
+    }
+  ]
+}
